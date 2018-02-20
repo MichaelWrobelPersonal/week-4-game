@@ -49,8 +49,10 @@ div#left-panel {
  }
 
 div#title-box { background-color: darksalmon;
-              height: 64px;
+              height: 54px;
               width: 200px;
+              text-align: center;
+              vertical-align: middle;
               margin: 10px;
               padding: 5px;
 }
@@ -87,7 +89,7 @@ div#crystal-spacer {
     clear: both;
     background-color: white;
     height: 70px;
-    width: 280px;
+    width: 277px;
     margin: 10px;
     padding: 5px;
 }
