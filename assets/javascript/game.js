@@ -3,6 +3,7 @@ $(document).ready(function() {
     var rubyCountArray = [0,0,0,0];
     var winCount = 0;
     var lossCount =0;
+    var information = "Click a gem to start";
 
     // Reset the Game;
     gameReset(); 
@@ -14,7 +15,7 @@ $(document).ready(function() {
     var playerExceededNumber = false;
 
     //Intialize display
-    updateOutputs("Click a gem to start!");
+    updateOutputs(information);
    
 // Event handlers
 $("#red-crystal").on("click", function(event) {
@@ -44,6 +45,9 @@ $("#green-crystal").on("click", function(event) {
 // common game functionality 
 function common_processing()
 {
+    /* clear out the info until something needs to be said */
+    information = "";
+
     /* Check for completion/exceeding the limit */
     if ( theCount > theNumber)
         playerExceededNumber = true;
@@ -57,12 +61,13 @@ function common_processing()
     {
         winCount++;
         $('#info-text').text("Victory");
+        information = "Victory!"
         console.log( 'Player Won' );
     }
     else if (playerExceededNumber)
     {
         lossCount++;
-        $('#info-text').text("Defeat");
+        information = "Defeat!";
         console.log( 'Player Lost' );
     }
     else
@@ -76,12 +81,11 @@ function common_processing()
         // Reset the Game;
         gameReset(); 
         // Pick another word
-        theNumber = pickANumber();
-        $('#info-text').text("Press any key to start");                                                                           
+        theNumber = pickANumber();                                                                           
     }
      
     // Output results to the Page for the user to see
-    updateOutputs("");
+    updateOutputs(information);
 };
 
 function gameReset()
@@ -115,15 +119,16 @@ function pickANumber( ) {
     return selectedNumber;
 };
 
-function updateOutputs( information ) {
+function updateOutputs( info ) {
     // Output result to the web page
-    $('#info-text').text(information);
+    $('#info-text').text(info);
     $('#win-count').text(winCount);
     $('#loss-count').text(lossCount);
     $('#random-crystal-target').text(theNumber);   
     $('#player-crystal-guess').text(theCount);
     // Output result to the Console for debugging
     console.log( 'Results so far.......' );
+    console.log( "Info: " + info );
     console.log( 'Wins: ' + winCount );
     console.log( 'Losses: ' + lossCount);
     console.log( 'The Number: ' +  theNumber );
