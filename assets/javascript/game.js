@@ -17,7 +17,7 @@ $(document).ready(function() {
     //Intialize display
     updateOutputs(information);
    
-// Event handlers
+// Event handlers - Game Play
 $("#red-crystal").on("click", function(event) {
     console.log('red-crystal')
     theCount += rubyCountArray[0];
@@ -108,10 +108,10 @@ function pickANumber( ) {
     var selectedNumber = randnum + 19;
     console.log('Selected Number: ' + selectedNumber);
     // Pick counts for the rubies 
-    rubyCountArray[0] = Math.floor((Math.random() * 10) + 1);
-    rubyCountArray[1] = Math.floor((Math.random() * 10) + 1);
-    rubyCountArray[2] = Math.floor((Math.random() * 10) + 1);
-    rubyCountArray[3] = Math.floor((Math.random() * 10) + 1);
+    rubyCountArray[0] = Math.floor((Math.random() * 12) + 1);
+    rubyCountArray[1] = Math.floor((Math.random() * 12) + 1);
+    rubyCountArray[2] = Math.floor((Math.random() * 12) + 1);
+    rubyCountArray[3] = Math.floor((Math.random() * 12) + 1);
     for (var i=0; i<rubyCountArray.length; i++)
     {
         console.log('Ruby ' + (i+1) + ': ' + rubyCountArray[i] );
@@ -133,7 +133,42 @@ function updateOutputs( info ) {
     console.log( 'Losses: ' + lossCount);
     console.log( 'The Number: ' +  theNumber );
     console.log( 'The Count: ' + theCount);
-
 };
+
+
+// Event handlers for visual effects
+$("#red-crystal").on("mouseout", function(event) {
+    $("#red-crystal").fadeIn();
+});
+
+$("#blue-crystal").on("mouseout", function(event) {
+    $("#blue-crystal").fadeIn();
+});
+
+$("#yellow-crystal").on("mouseout", function(event) {
+    $("#yellow-crystal").fadeIn();
+});
+
+$("#green-crystal").on("mouseout", function(event) {
+    $("#green-crystal").fadeIn();
+});
+ 
+
+$("#red-crystal").on("mouseover", function(event) {
+    $("#red-crystal").fadeOut().fadeIn();
+});
+
+$("#blue-crystal").on("mouseover", function(event) {
+    $("#blue-crystal").fadeOut().fadeIn();
+});
+
+$("#yellow-crystal").on("mouseover", function(event) {
+    $("#yellow-crystal").fadeOut().fadeIn();
+});
+
+$("#green-crystal").on("mouseover", function(event) {
+    $("#green-crystal").fadeOut().fadeIn();
+});
+ 
 
 }); 
